@@ -63,7 +63,7 @@ export class IWrapper {
 			let insertColumns_queryParams: string = insertAfter  ? ` AFTER \`${insertAfter}\`` : "";
 			if (insertBefore) {
 				const columns: string[] = await this.getColumns(tableName);
-				let insertAfter_found;
+				let insertAfter_found: string;
 				for (let columnIndex: number = 0; columnIndex < columns.length; columnIndex++) {
 					const column: string = columns[columnIndex];
 					if (column === insertBefore) {

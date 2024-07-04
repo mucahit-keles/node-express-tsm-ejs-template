@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 const nodeEnv: string = process.env.NODE_ENV || "development";
 
 /* frontend routes */
-import { indexRoute as index_frontend } from "./src/routes/frontend/index.js";
+import { indexRoute as index_frontend } from "./routes/frontend/index.js";
 
 const upload: multer.Multer = multer({ dest: "uploads/" });
 
@@ -27,7 +27,7 @@ app.use(express.static(joinPath(__dirname, "..", "public")));
 
 /* view engine */
 app.set("view engine", "ejs");
-app.set("views", joinPath(__dirname, "src", "views"));
+app.set("views", joinPath(__dirname, "views"));
 
 /* express modules */
 app.use(express.json({ limit: "50mb" }));

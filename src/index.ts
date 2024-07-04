@@ -11,6 +11,7 @@ const nodeEnv: string = process.env.NODE_ENV || "development";
 /* frontend routes */
 import { indexRoute as index_frontend } from "./routes/frontend/index.js";
 
+// for form file uploads
 const upload: multer.Multer = multer({ dest: "uploads/" });
 
 const __filedir: string = fileURLToPath(import.meta.url);
@@ -34,9 +35,6 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(joinPath(__dirname, "public")));
 app.use(cookieParser());
-
-const allow_panelOnly = cors({ origin: nodeEnv === "development" ? "http://panel.easyregister.local:8000/" : "https://panel.easyregister.io/", optionsSuccessStatus: 200 });
-const allow_anywhere = cors({ optionsSuccessStatus: 200 });
 
 /* frontend routes */
 app.get("/", index_frontend);
